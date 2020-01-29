@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <queue>
+#include <math.h>
 using namespace std;
 
 int main() {
@@ -27,26 +28,43 @@ int main() {
         visit[count] = new bool[tr];
     }
     
+    //붙어서입력된다. 각 행씩. 가로길이입력따라 자리수가 1인지 0인지 판별해서 배열에 입력해야한다.
+    //한줄 입력을 10의 제곱으로 나누면 몫이 1아니면 0이 나온다. 이 점을 이용해서 미로에 1과 0을 입력시킨다.
+     
     //미로 민들기, visit배열 초기화, sp배열 초기화
     //미로 주위를 0으로 채우야한다.
+    int num;
+    int mok;
+    int temp;
     for(int i=0; i<tc; i++){
         for(int j=0; j<tr; j++){
-            cout<<"miro["<<i<<"]["<<j<<"]"<<endl;
+            
             if(1<=i && i<=c && 1<=j && j<=r){
-                                
-                cin >> miro[i][j];
+                
+                if(j==1){
+                    cin >> num;
+                    temp = j;
+                    for(int b=(r-1); b>=0; b--){
+                        
+                        mok = num / int(pow(10,b));
+                        num = num % int(pow(10,b));
+                        miro[i][temp++] = mok;
+                        
+                    }
+                }
             }
                 
             else{
+                
                 miro[i][j] = 0;
                 
             }
-                
+            
             visit[i][j] = false;
             sp[i][j] = 10000000; // 최대수
         }
     }
-    cout << "입력끝" << endl;
+    
     sp[1][1] = 1;
     //bfs하면서 최단거리 기록
     //1,1 부터 시작
@@ -54,7 +72,7 @@ int main() {
         for(int j=1; j<tc; j++){
             if(visit[i][j] == true)
                 continue;
-            cout<<"miro["<<i<<"]["<<j<<"]"<<endl;
+            
             queue <int> x;
             queue <int> y;
             x.push(i);
