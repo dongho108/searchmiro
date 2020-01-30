@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  백준미로탐색
+//  백준미로탐색
 //
 //  Created by dongho on 2020/01/15.
 //  Copyright © 2020 dongho. All rights reserved.
@@ -33,24 +33,17 @@ int main() {
      
     //미로 민들기, visit배열 초기화, sp배열 초기화
     //미로 주위를 0으로 채우야한다.
-    int num;
-    int mok;
-    int temp;
+    
     for(int i=0; i<tc; i++){
         for(int j=0; j<tr; j++){
             
             if(1<=i && i<=c && 1<=j && j<=r){
                 
                 if(j==1){
-                    cin >> num;
-                    temp = j;
-                    for(int b=(r-1); b>=0; b--){
-                        
-                        mok = num / int(pow(10,b));
-                        num = num % int(pow(10,b));
-                        miro[i][temp++] = mok;
-                        
+                    for(int t=1; t<=r; t++){
+                        scanf("%1d", &miro[i][t]);
                     }
+                    
                 }
             }
                 
@@ -59,7 +52,6 @@ int main() {
                 miro[i][j] = 0;
                 
             }
-            
             visit[i][j] = false;
             sp[i][j] = 10000000; // 최대수
         }
