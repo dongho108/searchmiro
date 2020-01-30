@@ -5,6 +5,7 @@
 ### 미로(miro), 방문확인(visit), 최단거리(sp) 배열을 2차원 동적배열로 만든다.
 대신 미로의 주위를 벽으로 둘러쌌다고 생각하고 주위를 0으로 둘러싸는 배열을 만든다
 
+[IMG_0037](https://user-images.githubusercontent.com/54317630/73428272-0d844780-437c-11ea-8aca-701b2309801f.jpeg)
 
 ```c++
 int** miro = new int*[tc];	
